@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="d-flex justify-content-center" sytle="font-weight:bold;">MOVIES</h1>
+<section class="container">
+<div class="d-flex">
+  {% for movie in movies %}
+    <article class="row p-5">
+      <div class="card p-3" style="width:300px">
+        <a href="{% url 'movies:detail' movie.pk %}" style="height:400px">
+          <img src="{{movie.poster_path}}" class="card-img-top" alt="..."  >
+        </a>
+        <hr>
+        <div class="card-body p-0 text-center">
+          <a href="{% url 'movies:detail' movie.pk %}" style="text-decoration:none; color:black; font-size:1.5rem; " >{{movie.title}}</a>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+</section>
+
+{% endblock content %}

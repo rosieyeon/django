@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="d-flex">
+    <div class="px-5"> <img src=" {{movie.poster_path}} " alt="" height="500"> </div>
+    {% comment %} <div class="d-flex flex-column justify-content-between">
+      <h1>{{movie.title}}</h1>
+      <div> 줄거리: {{movie.overview}} </div>
+      <div class="align-bottom">
+        <form action="{% url 'movies:edit' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <button>수정</button>
+        </form>
+
+        <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <button onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</button>
+        </form>
+      </div>
+    </div> {% endcomment %}
+    <div class="card py-2" style="width: 30rem; height:500px ;">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
+        <hr>     
+        <p class="card-text" style="height: 340px">{{movie.overview}}</p>
+        <hr>
+        <div class="d-flex justify-content-end">        
+          <form action="{% url 'movies:edit' movie.pk %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-primary">수정</button>
+          </form>
+          <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-primary mx-2" onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

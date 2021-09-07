@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mx-3">New</h1>
+<form action="{% url 'movies:create'%}" method='POST'>
+{% csrf_token %}
+  {% comment %} <div>
+    <label for="title">영화제목: </label>
+    <input type="text" name="title" id="title">
+  </div> {% endcomment %}
+  <div class="d-flex col-6 flex-column mx-3">
+    <div class="input-group mb-3">
+    <span class="input-group-text" style="width:100px" id="title">영화제목</span>
+    <input type="text" class="form-control" name="title" id="title" aria-label="Sizing example input" aria-describedby="title">
+    </div>
+    {% comment %} <div>
+      <label for="overview">줄거리: </label>
+      <textarea name="overview" id="overview" cols="30" rows="10"></textarea>
+    </div> {% endcomment %}
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:100px">줄거리</span>
+      <textarea class="form-control" name="overview" id="overview" aria-label="With textarea"></textarea>
+    </div>
+    {% comment %} <div>
+      <label for="poster_path">포스터: </label>
+      <input type="text" name="poster_path" id="poster_path" >
+    </div> {% endcomment %}
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:100px" id="poster_path">포스터</span>
+      <input type="text" class="form-control" name="poster_path" id="poster_path" aria-label="Sizing example input" aria-describedby="poster_path">
+    </div>
+    <div>
+      <button class="btn btn-primary">등록</button>
+    </div>
+  </div>
+</form>
+
+{% endblock content %}
